@@ -1,0 +1,60 @@
+-----------------------Spring Data Redis----------------------
+一、spring data redis
+    1、什么是springdata?
+        springdata是用于简化数据库访问的开源框架，主要包括：jdbc、redis、elasticsearch
+    2、什么是spring data redis?
+        spring data redis是springdata下的一个子模块，作用：简化redis
+    3、为什么用RedisTemplate而不用jedis？
+        RedisTemplate整合的是lettuce，大并发下lettuce效率更高
+        redisTemplate直接注入使用方便
+    4、spring data redis的启动器
+        spring-boot-starter-data-redis
+
+二、spring data redis入门
+    1、pom.xml
+            web、data-redis
+    2、application.yml
+            spring:
+              redis:
+                cluster:
+                  nodes:
+                    - 192.168.32.130:7001
+                    - 192.168.32.130:7002
+                    - 192.168.32.130:7003
+                    - 192.168.32.130:7004
+                    - 192.168.32.130:7005
+                    - 192.168.32.130:7006
+                lettuce:
+                  pool:
+                    max-active: 20
+                    max- idle: 10
+                    min-idle: 5
+    3、config
+        @Configuration
+        public class RedisConfig{
+
+            @Bean
+            public RedisTemplaste<String,Object> redisTemplaste(RedisConnectionFactory factory){
+                RedisTemplate redisTemplate = new RedisTemplate();
+                redisTemplate.setConnectionFactory(factory);
+
+                //创建序列化器
+                StringRedisSerializer stringRedisSerializerKey = new StringRedisSerializer();
+                Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializerValue = new Jackson2JsonRedisSerializer<>(Object.class);
+                ObjectMapper om = new ObjectMapper();
+                om.setVisibility(PropertyAccessor.ALL,JsonAutoDetect.Visibility.ANY);
+                om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+                jackson2JsonRedisSerializerValue..setObjectMapper(om);
+
+                //设置序列化器
+                redisTemplate.setKeySerializer(stringRedisSerializerKey);
+                redisTemplate.setValueSerializer(jackson2JsonRedisSerializerValue);
+                redisTemplate.setHashKeySerializer(stringRedisSerializerKey);
+                redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializerValue);
+                return redisTemplate;
+            }
+        }
+
+三、序列化器
+    Jackson2JsonRedisSerializer ：序列化object对象为json字符串
+    StringRedisSerializer：简单的String序列化，不能序列化Bean

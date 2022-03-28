@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usian.mapper.SearchItemMapper" >
+
+    <select id="getItemList" resultType="com.usian.pojo.SearchItem">
+        SELECT
+            t1.id,
+            t1.title item_title,
+            t1.sell_point item_sell_point,
+            t1.price item_price,
+            t1.image item_image,
+            t2.name item_category_name,
+            t3.item_desc item_desc
+        FROM
+            tb_item t1,
+            tb_item_cat t2,
+            tb_item_desc t3
+        WHERE
+            t1.cid = t2.id
+          AND t1.id = t3.item_id
+          AND t1.`status` = 1
+    </select>
+
+    <select id="getItemById" parameterType="String" resultType="com.usian.pojo.SearchItem">
+        SELECT
+            a.id,
+            a.title item_title,
+            a.sell_point item_sell_point,
+            a.price item_price,
+            a.image item_image,
+            b.name item_category_name,
+            c.item_desc item_desc
+        FROM
+            tb_item a
+                JOIN tb_item_cat b ON a.cid = b.id
+                JOIN tb_item_desc c ON a.id = c.item_id
+        WHERE a.status = 1
+          AND a.id=#{itemId}
+    </select>
+</mapper>

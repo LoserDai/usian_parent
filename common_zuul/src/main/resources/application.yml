@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: common-zuul
+server:
+  port: 7070
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+zuul:
+  ignored-services: "*" #忽略的服务,多个可以用*
+  sensitive-headers: true
+  routes:
+    usian-item-web:
+      path: /backend_item/**
+    usian-content-web:
+      path: /backend_content/**
+    usian-search-web:
+      path: /frontend_search/**
+    usian-portal-web:
+      path: /frontend_portal/**
+    usian-detail-web:
+      path: /frontend_detail/**
+    usian-sso-web:
+      path: /frontend_sso/**
+    usian-cart-web:
+      path: /frontend_cart/**
+    usian-order-web:
+      path: /frontend_order/**
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 5000

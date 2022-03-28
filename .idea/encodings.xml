@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/common_config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_mapper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_pojo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_zuul/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_cart_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_cart_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_cart_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_content_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_content_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_content_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_detail_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_item_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_item_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_item_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_order_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_order_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_order_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_portal_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_search_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_search_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_search_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_sso_feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_sso_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/usian_sso_web/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
