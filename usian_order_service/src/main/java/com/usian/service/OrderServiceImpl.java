@@ -112,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
         criteria.andCreateTimeLessThan(calendar.getTime());
         //查询出超时订单
         List<TbOrder> tbOrderList = tbOrderMapper.selectByExample(tbOrderExample);
-        //2、关闭超时订单： 状态已关闭 关闭时间 修改时间
+        //2、关闭超时订单： 状态已关闭 关闭时间 修改时间.
         for (TbOrder tbOrder : tbOrderList) {
             tbOrder.setStatus(6);
             tbOrder.setUpdateTime(new Date());
