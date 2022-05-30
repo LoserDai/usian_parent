@@ -7,9 +7,12 @@ import java.util.List;
 * 分页模型
 */
 public class PageResult implements Serializable {
-    private Integer pageIndex; //当前页
-    private Long totalPage; //总页数
-    private List result; //结果集
+    //当前页
+    private Integer pageIndex;
+    //总页数
+    private Long totalPage;
+    //结果集
+    private List result;
 
     public Integer getPageIndex() {
         return pageIndex;

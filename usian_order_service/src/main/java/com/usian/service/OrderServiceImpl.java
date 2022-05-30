@@ -133,6 +133,9 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    /**
+     * 扫描本地消息表,MQ发送消息
+     */
     @Override
     public void scanAndSendOfLocalMessage() {
         LocalMessageExample localMessageExample = new LocalMessageExample();

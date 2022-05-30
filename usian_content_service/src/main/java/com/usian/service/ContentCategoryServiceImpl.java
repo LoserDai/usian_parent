@@ -123,7 +123,8 @@ public class ContentCategoryServiceImpl implements ContentCategoryService{
         PageInfo<TbContent> pageInfo = new PageInfo<>(tbContentList);
         PageResult pageResult = new PageResult();
         pageResult.setResult(tbContentList);
-        pageResult.setPageIndex(pageInfo.getPageNum());//当前页
+        //当前页
+        pageResult.setPageIndex(pageInfo.getPageNum());
         pageResult.setTotalPage(Long.valueOf(pageInfo.getPages()));
 
         return pageResult;

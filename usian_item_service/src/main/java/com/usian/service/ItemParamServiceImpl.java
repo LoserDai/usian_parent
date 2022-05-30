@@ -89,9 +89,12 @@ public class ItemParamServiceImpl implements ItemParamService {
         PageInfo<TbItemParam> pageInfo = new PageInfo<>(tbItemParams);
 
         PageResult pageResult = new PageResult();
-        pageResult.setResult(tbItemParams); //返回结果集合
-        pageResult.setTotalPage((long) pageInfo.getPages()); //总页数
-        pageResult.setPageIndex(pageInfo.getPageNum()); //当前页
+        //返回结果集合
+        pageResult.setResult(tbItemParams);
+        //总页数
+        pageResult.setTotalPage((long) pageInfo.getPages());
+        //当前页
+        pageResult.setPageIndex(pageInfo.getPageNum());
 
         return pageResult;
     }

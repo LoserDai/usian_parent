@@ -26,6 +26,13 @@ public interface ContentServiceFeign {
     @RequestMapping("/service/content/updateContentCategory")
     Integer updateContentCategory(@RequestBody TbContentCategory tbContentCategory);
 
+    /**
+     * 分页查询
+     * @param categoryId
+     * @param pages
+     * @param rows
+     * @return
+     */
     @RequestMapping("/service/content/selectTbContentAllByCategoryId")
     PageResult selectTbContentAllByCategoryId(@RequestParam Long categoryId, @RequestParam Integer pages, @RequestParam Integer rows);
 
