@@ -14,7 +14,9 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 @Configuration
 public class QuartzConfig{
 
-    //干什么事
+    /**
+     *干什么事
+     */
     @Bean
     public MethodInvokingJobDetailFactoryBean methodInvokingJobDetailFactoryBean(OrderJob orderJob){
         MethodInvokingJobDetailFactoryBean jobDetailFactoryBean = new MethodInvokingJobDetailFactoryBean();
@@ -22,7 +24,11 @@ public class QuartzConfig{
         jobDetailFactoryBean.setTargetMethod("closeTimeOutOrder");
         return jobDetailFactoryBean;
     }
-    //什么时间
+
+    /**什么时间
+     * @param jobDetail
+     * @return
+     */
     @Bean
     public CronTriggerFactoryBean cronTriggerFactoryBean(MethodInvokingJobDetailFactoryBean jobDetail){
         CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
@@ -31,7 +37,12 @@ public class QuartzConfig{
         cronTriggerFactoryBean.setCronExpression("0/10 * * * * ?");
         return cronTriggerFactoryBean;
     }
-    //什么时间干什么事
+
+    /**
+     * 什么时间做什么事
+     * @param triggerFactoryBean
+     * @return
+     */
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean triggerFactoryBean){
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();

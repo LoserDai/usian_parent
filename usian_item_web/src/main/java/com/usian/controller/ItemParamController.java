@@ -44,6 +44,7 @@ public class ItemParamController {
 
     @RequestMapping("/deleteItemParamById")
     public Result deleteItemParamById(Integer id){
+        //删除商品相关信息并将商品状态修改
         Integer count = itemServiceFeign.deleteItemParamById(id);
         if (count == 1){
             return Result.ok();
@@ -53,6 +54,7 @@ public class ItemParamController {
 
     @RequestMapping("/selectItemParamAll")
     public Result selectItemParamAll(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows){
+        //分页查询数据一页五条数据,先查询第一页的
         PageResult pageResult = itemServiceFeign.selectItemParamAll(page,rows);
         if (pageResult != null){
             return Result.ok(pageResult);

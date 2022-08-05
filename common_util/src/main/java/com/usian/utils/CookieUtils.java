@@ -146,8 +146,9 @@ public final class CookieUtils {
                 cookieValue = URLEncoder.encode(cookieValue, "utf-8");
             }
             Cookie cookie = new Cookie(cookieName, cookieValue);
-            if (cookieMaxage > 0)
+            if (cookieMaxage > 0){
                 cookie.setMaxAge(cookieMaxage);
+            }
             if (null != request) {// 设置域名的cookie
             	String domainName = getDomainName(request);
             	// System.out.println(domainName);
@@ -180,7 +181,6 @@ public final class CookieUtils {
                 cookie.setMaxAge(cookieMaxage);
             if (null != request) {// 设置域名的cookie
             	String domainName = getDomainName(request);
-            	// System.out.println(domainName);
                 if (!"localhost".equals(domainName)) {
                 	cookie.setDomain(domainName);
                 }

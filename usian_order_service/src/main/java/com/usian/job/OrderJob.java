@@ -44,7 +44,7 @@ public class OrderJob {
         }catch (Exception e){
             e.printStackTrace();
         }finally {
-            //预防死锁
+            //预防死锁,删除锁
             redisClient.del(SETNX_ORDER_LOCK_KEY);
         }
     }
