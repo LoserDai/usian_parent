@@ -143,7 +143,7 @@ public class OrderServiceImpl implements OrderService {
         criteria.andStateEqualTo(0);
         List<LocalMessage> localMessageList = localMessageMapper.selectByExample(localMessageExample);
         for (LocalMessage localMessage : localMessageList) {
-            //发送消息
+            //给MQ发送消息
             mqSender.sendMsg(localMessage);
         }
     }
