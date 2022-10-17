@@ -161,14 +161,23 @@ public class CartController {
         CookieUtils.setCookie(request,response,CART_COOKIE_KEY,JsonUtils.objectToJson(cart),CART_COOKIE_EXPIRE,true);
     }
 
-    //把商品放入到车中:首先先查询该商品的信息,然后设置商品的num为 1
+    /**
+     * 把商品放入到车中:首先先查询该商品的信息,然后设置商品的num为 1
+     * @param cart
+     * @param itemId
+     * @param num
+     */
     private void addItemToCart(Map<String, TbItem> cart, String itemId,int num) {
         TbItem tbItem = itemServiceFeign.selectItemInfo(Long.valueOf(itemId));
         tbItem.setNum(num);
         cart.put(itemId,tbItem);
     }
 
-    //从Cookie中把Car拿出来
+    /**
+     * 从Cookie中把Car拿出来
+     * @param request
+     * @return
+     */
     private Map<String, TbItem> getCartFromCookie(HttpServletRequest request) {
         String cartJson = CookieUtils.getCookieValue(request, CART_COOKIE_KEY, true);
         if (cartJson != null){

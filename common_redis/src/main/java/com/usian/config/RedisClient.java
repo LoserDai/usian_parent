@@ -53,7 +53,6 @@ public class RedisClient {
         return redisTemplate.hasKey(key);
     }
 
-    //============================String=============================
     /**
      * 普通缓存获取
      * @param key 键
@@ -150,7 +149,6 @@ public class RedisClient {
         redisTemplate.opsForHash().delete(key,item);
     }
 
-    //============================set=============================
     /**
      * 根据key获取Set中的所有值
      * @param key 键
@@ -196,7 +194,6 @@ public class RedisClient {
             return 0;
         }
     }
-    //===============================list=================================
 
     /**
      * 获取list缓存的内容
