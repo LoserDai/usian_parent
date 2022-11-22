@@ -19,10 +19,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket docket(){
+    public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())//api信息：标题和描述
-                .select().apis(RequestHandlerSelectors.basePackage("com.usian.controller")).paths(PathSelectors.any())//swagger的注解所在包
+                //api信息：标题和描述
+                .apiInfo(apiInfo())
+                //swagger的注解所在包
+                .select().apis(RequestHandlerSelectors.basePackage("com.usian.controller")).paths(PathSelectors.any())
                 .build();
     }
 
