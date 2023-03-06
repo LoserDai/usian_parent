@@ -48,7 +48,9 @@ public class SearchItemServiceImpl implements SearchItemService{
 
     @Override
     public Boolean importAll() {
-            //要求: 每次导入1000条数据,批量请求ES
+        /**
+         * 要求: 每次导入1000条数据,批量请求ES
+         */
         try {
             if (!isExitsIndex()){
                 createIndex();
@@ -74,14 +76,20 @@ public class SearchItemServiceImpl implements SearchItemService{
         }
     }
 
+    /**
+     * 按照卖点,描述,描述,类别,查询商品:multi_match
+     * @param q
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @Override
     public List<SearchItem> list(String q, Long page, Integer pageSize) {
 
         try {
-            //按照卖点,描述,描述,类别,查询商品:multi_match
             SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-            searchSourceBuilder.query(QueryBuilders.multiMatchQuery(q,new String[]{
-                    "item_title","item_desc","item_sell_point","item_category_name"}));
+            searchSourceBuilder.query(QueryBuilders.multiMatchQuery(q, new String[]{
+                    "item_title", "item_desc", "item_sell_point", "item_category_name"}));
             //设置搜索源
             SearchRequest searchRequest = new SearchRequest(ES_INDEX_NAME);
             searchRequest.types(ES_TYPE_NAME);
@@ -116,14 +124,14 @@ public class SearchItemServiceImpl implements SearchItemService{
                 SearchHit hit = hits[i];
                 SearchItem searchItem = JsonUtils.jsonToPojo(hit.getSourceAsString(), SearchItem.class);
                 Map<String, HighlightField> highlightFields = hit.getHighlightFields();
-                if (highlightFields != null && highlightFields.size() > 0){
+                if (highlightFields != null && highlightFields.size() > 0) {
                     String item_title = highlightFields.get("item_title").getFragments()[0].toString();
                     //将高亮的字段替换为 item_title
                     searchItem.setItem_title(item_title);
                 }
                 searchItemList.add(searchItem);
             }
-                return searchItemList;
+            return searchItemList;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
